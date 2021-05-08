@@ -6,7 +6,7 @@
   <link href="https://sheng-yw.github.io/atom.xml" rel="self"/>
   
   <link href="https://sheng-yw.github.io/"/>
-  <updated>2021-04-22T06:35:23.306Z</updated>
+  <updated>2021-05-08T02:35:35.951Z</updated>
   <id>https://sheng-yw.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://sheng-yw.github.io/2021/05/06/20210506/"/>
+    <id>https://sheng-yw.github.io/2021/05/06/20210506/</id>
+    <published>2021-05-06T10:13:12.626Z</published>
+    <updated>2021-05-08T02:35:35.951Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="React系列之useState"><a href="#React系列之useState" class="headerlink" title="React系列之useState"></a>React系列之useState</h1><p>  基本用法<br>  <code>const [state, setState] = useState(initialState);</code><br>  当然也可以写成<br>  <code>const state = useState(initialState)</code><br>  state为数组 state[0]为状态值 state[1]为更新状态的函数<br>  我们知道useState跟新状态时为异步更新，setState又没有跟之前版本提供回调，当想要同步获取最新值时可以这样<br>  <code>useEffect(() =&gt; &#123;</code><br>    <code>TODO 处理你的逻辑</code><br>  <code>&#125;, [state])</code><br>  但是这个方法在监听一个对象的某一个属性时判断就特别费事<br>  <code>setState(() =&gt; &#123;</code><br>    <code>TODO 处理你的逻辑</code><br>    <code>return neState</code><br>  <code>&#125;)</code><br>  newState为想要改变的最新值，在这个回调中处理逻辑</p><h2 id="关于优化"><a href="#关于优化" class="headerlink" title="关于优化"></a>关于优化</h2><p>  setState为异步更新调用一次渲染一次，所以在一个方法内调用多个不同的setState时会导致许多不必要的性能消耗！解决办法我总结了一下两点<br>  1、把多个state合并成一个state<br>  2、使用React中自带api解决<br>    <code>ReactDOM.unstable_batchedUpdates(() =&gt; &#123;</code><br>      <code>setState1(xxx)</code><br>      <code>setState2(xxx)</code><br>    <code>&#125;)</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;React系列之useState&quot;&gt;&lt;a href=&quot;#React系列之useState&quot; class=&quot;headerlink&quot; title=&quot;React系列之useState&quot;&gt;&lt;/a&gt;React系列之useState&lt;/h1&gt;&lt;p&gt;  基本用法&lt;br&gt;  &lt;c</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title></title>
