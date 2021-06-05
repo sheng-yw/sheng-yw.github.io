@@ -6,7 +6,7 @@
   <link href="https://sheng-yw.github.io/atom.xml" rel="self"/>
   
   <link href="https://sheng-yw.github.io/"/>
-  <updated>2021-05-08T02:35:35.951Z</updated>
+  <updated>2021-06-05T06:11:04.819Z</updated>
   <id>https://sheng-yw.github.io/</id>
   
   <author>
@@ -18,12 +18,32 @@
   
   <entry>
     <title></title>
+    <link href="https://sheng-yw.github.io/2021/05/25/20210524/"/>
+    <id>https://sheng-yw.github.io/2021/05/25/20210524/</id>
+    <published>2021-05-25T02:51:12.272Z</published>
+    <updated>2021-06-05T06:11:04.819Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="React系列中useEffect"><a href="#React系列中useEffect" class="headerlink" title="React系列中useEffect"></a>React系列中useEffect</h1><h1 id="什么是useEffect"><a href="#什么是useEffect" class="headerlink" title="什么是useEffect"></a>什么是useEffect</h1><p>  useEffect是可以让你在函数组件中执行副作用操作(相当于类组件中生命周期函数)<br>  它可以看作是三个生命周期函数的组合<br>  1、componentDidMount<br>    <code>useEffect(() =&gt; &#123;&#125;, [])</code><br>    组件生命周期内执行一次<br>  2、componentDidUpdate<br>    <code>useEffect(() =&gt; &#123;&#125;, [state])</code><br>    此写法也会在初始化时执行，state变化时再次执行<br>  3、componentWillUnMount<br>    <code>useEffect(() =&gt; &#123;</code><br>    <code>  return () =&gt; &#123;</code><br>    <code>    //TODO 组件销毁前执行</code><br>    <code>  &#125;</code><br>    <code>&#125;, [])</code></p><h1 id="useEffect有哪些注意点"><a href="#useEffect有哪些注意点" class="headerlink" title="useEffect有哪些注意点"></a>useEffect有哪些注意点</h1><p>  1、假如说useEffect监听了多个state,同事更新多个state情况会导致useEffect中函数执行多次，这样就需要特别处理多个state合并一个或者在里面进行判断(业务场景复杂多样，具体还是要在设计之初就考虑进去)<br>  2、禁止在条件语句中使用<br>    <code>if (name !== &#39;xx&#39;) &#123;</code><br>    <code>  useEffect(() =&gt; &#123;&#125;, [])</code><br>    <code>&#125;</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;React系列中useEffect&quot;&gt;&lt;a href=&quot;#React系列中useEffect&quot; class=&quot;headerlink&quot; title=&quot;React系列中useEffect&quot;&gt;&lt;/a&gt;React系列中useEffect&lt;/h1&gt;&lt;h1 id=&quot;什么是us</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
     <link href="https://sheng-yw.github.io/2021/05/06/20210506/"/>
     <id>https://sheng-yw.github.io/2021/05/06/20210506/</id>
     <published>2021-05-06T10:13:12.626Z</published>
-    <updated>2021-05-08T02:35:35.951Z</updated>
+    <updated>2021-05-10T06:16:39.393Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="React系列之useState"><a href="#React系列之useState" class="headerlink" title="React系列之useState"></a>React系列之useState</h1><p>  基本用法<br>  <code>const [state, setState] = useState(initialState);</code><br>  当然也可以写成<br>  <code>const state = useState(initialState)</code><br>  state为数组 state[0]为状态值 state[1]为更新状态的函数<br>  我们知道useState跟新状态时为异步更新，setState又没有跟之前版本提供回调，当想要同步获取最新值时可以这样<br>  <code>useEffect(() =&gt; &#123;</code><br>    <code>TODO 处理你的逻辑</code><br>  <code>&#125;, [state])</code><br>  但是这个方法在监听一个对象的某一个属性时判断就特别费事<br>  <code>setState(() =&gt; &#123;</code><br>    <code>TODO 处理你的逻辑</code><br>    <code>return neState</code><br>  <code>&#125;)</code><br>  newState为想要改变的最新值，在这个回调中处理逻辑</p><h2 id="关于优化"><a href="#关于优化" class="headerlink" title="关于优化"></a>关于优化</h2><p>  setState为异步更新调用一次渲染一次，所以在一个方法内调用多个不同的setState时会导致许多不必要的性能消耗！解决办法我总结了一下两点<br>  1、把多个state合并成一个state<br>  2、使用React中自带api解决<br>    <code>ReactDOM.unstable_batchedUpdates(() =&gt; &#123;</code><br>      <code>setState1(xxx)</code><br>      <code>setState2(xxx)</code><br>    <code>&#125;)</code></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="React系列之useState"><a href="#React系列之useState" class="headerlink" title="React系列之useState"></a>React系列之useState</h1><p>  基本用法<br>  <code>const [state, setState] = useState(initialState);</code><br>  当然也可以写成<br>  <code>const state = useState(initialState)</code><br>  state为数组 state[0]为状态值 state[1]为更新状态的函数<br>  我们知道useState跟新状态时为异步更新，setState又没有跟之前版本提供回调，当想要同步获取最新值时可以这样<br>  <code>useEffect(() =&gt; &#123;</code><br>    <code>TODO 处理你的逻辑</code><br>  <code>&#125;, [state])</code><br>  但是这个方法会在初始化时执行<br>  <code>setState(() =&gt; &#123;</code><br>    <code>TODO 处理你的逻辑</code><br>    <code>return newState</code><br>  <code>&#125;)</code><br>  newState为想要改变的最新值，在这个回调中处理逻辑</p><h2 id="关于优化"><a href="#关于优化" class="headerlink" title="关于优化"></a>关于优化</h2><p>  setState为异步更新调用一次渲染一次，所以在一个方法内调用多个不同的setState时会导致许多不必要的性能消耗！解决办法我总结了一下两点<br>  1、把多个state合并成一个state<br>  2、使用React中自带api解决<br>    <code>ReactDOM.unstable_batchedUpdates(() =&gt; &#123;</code><br>      <code>setState1(xxx)</code><br>      <code>setState2(xxx)</code><br>    <code>&#125;)</code></p>]]></content>
     
     
       
