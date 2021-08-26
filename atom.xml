@@ -60,15 +60,8 @@
     <link href="https://sheng-yw.github.io/2021/05/25/webpack/"/>
     <id>https://sheng-yw.github.io/2021/05/25/webpack/</id>
     <published>2021-05-25T02:51:12.272Z</published>
-    <updated>2021-08-26T08:38:08.991Z</updated>
+    <updated>2021-08-26T08:43:20.990Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="React系列中useEffect"><a href="#React系列中useEffect" class="headerlink" title="React系列中useEffect"></a>React系列中useEffect</h1><h1 id="什么是useEffect"><a href="#什么是useEffect" class="headerlink" title="什么是useEffect"></a>什么是useEffect</h1><p>  useEffect是可以让你在函数组件中执行副作用操作(相当于类组件中生命周期函数)<br>  它可以看作是三个生命周期函数的组合<br>  1、componentDidMount<br>    <code>useEffect(() =&gt; &#123;&#125;, [])</code><br>    组件生命周期内执行一次<br>  2、componentDidUpdate<br>    <code>useEffect(() =&gt; &#123;&#125;, [state])</code><br>    此写法也会在初始化时执行，state变化时再次执行<br>  3、componentWillUnMount<br>    <code>useEffect(() =&gt; &#123;</code><br>    <code>  return () =&gt; &#123;</code><br>    <code>    //TODO 组件销毁前执行</code><br>    <code>  &#125;</code><br>    <code>&#125;, [])</code></p><h1 id="useEffect有哪些注意点"><a href="#useEffect有哪些注意点" class="headerlink" title="useEffect有哪些注意点"></a>useEffect有哪些注意点</h1><p>  1、假如说useEffect监听了多个state,同事更新多个state情况会导致useEffect中函数执行多次，这样就需要特别处理多个state合并一个或者在里面进行判断(业务场景复杂多样，具体还是要在设计之初就考虑进去)<br>  2、禁止在条件语句中使用<br>    <code>if (name !== &#39;xx&#39;) &#123;</code><br>    <code>  useEffect(() =&gt; &#123;&#125;, [])</code><br>    <code>&#125;</code></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;React系列中useEffect&quot;&gt;&lt;a href=&quot;#React系列中useEffect&quot; class=&quot;headerlink&quot; title=&quot;React系列中useEffect&quot;&gt;&lt;/a&gt;React系列中useEffect&lt;/h1&gt;&lt;h1 id=&quot;什么是us</summary>
-      
     
     
     
