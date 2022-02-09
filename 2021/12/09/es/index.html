@@ -422,7 +422,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-08-26
+                    2021-12-09
                 </div>
                 
 
@@ -443,9 +443,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><p>1、安装<br>  1)、上传tgz压缩包至服务器<br>  2)、tar -zxvf nginx.tgz<br>  3)、执行 ./configure –prefix=自定义目录<br>  4)、make &amp;&amp; make install<br>  5)、cd 自定义目录<br>  6)、启动 ./sbin/nginx<br>  7)、重启 ./sbin/nginx -s reload<br>2、查看ng进程<br>  ps –ef | grep<br>3、查看ng服务<br>  ps -A | grep nginx    </p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>ng文件包括1、全局模块；2、http模块；3、events模块<br>http模块嵌套多个server,配置代理,缓存,日志等<br>server模块配置虚拟主机的相关参数，一个http中可以配置多个server<br>server中location块是处理符合请求规则的资源导向问题，也是我们主要配置的核心模块<br>loaction中匹配规则<br>location = /uri =开头表示精确匹配，只有完全匹配上才能生效<br>lcoation = ^ <del>/uri ^</del> 开头对URL路径进行前缀匹配，并且在正则之前<br>location ~ pattern 　~开头表示区分大小写的正则匹配。<br>location ~* pattern 　~*开头表示不区分大小写的正则匹配。<br>location /uri 不带任何修饰符，也表示前缀匹配，但是在正则匹配之后。<br>location / 　通用匹配，任何未匹配到其它location的请求都会匹配到，相当于switch中的default<br>location 与 root相结合表示的是实际请求的资源会自动拼接location后的uri<br>location 与 alias相结合表示的是实际请求的资源会去alias配置的路径去获取 但是后缀要加”/“</p>
-<h1 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h1>
+                <h1 id="ES是什么"><a href="#ES是什么" class="headerlink" title="ES是什么"></a>ES是什么</h1><h1 id="ES有什么用"><a href="#ES有什么用" class="headerlink" title="ES有什么用"></a>ES有什么用</h1><h1 id="ES怎么存，怎么取"><a href="#ES怎么存，怎么取" class="headerlink" title="ES怎么存，怎么取"></a>ES怎么存，怎么取</h1>
                 
             </div>
             <hr/>
@@ -460,12 +458,12 @@
                 wensheng.yws
             </a>
             has waived all copyright and related or neighboring rights to
-            <a  href="/2021/08/26/nginx/">
+            <a  href="/2021/12/09/es/">
                 《》
             </a>
             . This work is published from:
             <span property="vcard:Country" datatype="dct:ISO3166"
-                content="US" about="/2021/08/26/nginx/">
+                content="US" about="/2021/12/09/es/">
                 United States.
             </span>
             </p>
@@ -537,7 +535,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/08/26/node/">
+                <a href="/2022/01/06/nginx/">
                     <div class="card-image">
                         
                         
@@ -554,7 +552,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-26
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-06
                         </span>
                         <span class="publish-author">
                             
@@ -574,7 +572,7 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/26/phone/">
+                <a href="/2021/08/26/node/">
                     <div class="card-image">
                         
                         
@@ -791,7 +789,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2021</span>
+                <span id="year">2019-2022</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">wensheng.yws</a>
