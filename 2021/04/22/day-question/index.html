@@ -468,6 +468,9 @@
 <h2 id="从输入-url-到页面展示经历哪些过程"><a href="#从输入-url-到页面展示经历哪些过程" class="headerlink" title="从输入 url 到页面展示经历哪些过程"></a>从输入 url 到页面展示经历哪些过程</h2><p>1、DNS 解析域名（先从浏览器缓存中找-系统 hosts 中-域名服务器-根域名服务器）<br>2、TCP 链接（三次握手 请求资源,四次挥手断开链接）<br>3、处理返回页面信息<br>4、浏览器渲染（解析标签生成 dom 树，解析 css 生成 cssom 树，两者结合生成 render 树结合 layout 进行布局绘制展示）</p>
 <h2 id="script-defer-和-async-有什么区别"><a href="#script-defer-和-async-有什么区别" class="headerlink" title="script defer 和 async 有什么区别"></a>script defer 和 async 有什么区别</h2><p>没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行阻塞浏览器渲染<br>defer 和 async 都属于异步执行加载<br>async 是资源加载完毕会立刻执行，乱序的<br>defer 是资源加载完毕不是立刻执行，而是在元素解析完成之后，DOMContentLoaded 事件执行之前完成执行</p>
 <h2 id="强缓存协商缓存"><a href="#强缓存协商缓存" class="headerlink" title="强缓存协商缓存"></a>强缓存协商缓存</h2><p>1、强缓存：不会向服务器发送请求，直接从缓存资源中获取，状态码 200<br>2、协商缓存：向服务器发送请求，服务器会根据 http 请求头中字段来判断是否命中缓存，如果命中，从缓存中读取数据，返回 304 状态码<br>共同点：都是从客户端读取资源<br>强缓存需要 Cache-Control 字段，其中 max-age 属性是控制缓存最大时长(单位是秒),过期会重新发送请求。public 表示可以被任意对象缓存(客户端，代理服务器),private 表示只能在客户端缓存，no-cache 是加载资源前，强制发送请求到服务器进行协商缓存；no-store 表示不被任何缓存。<br>协商缓存需要用到 Etag 字段与 if-noneif-none-matc，Etag 是 HTTP 响应头中字段，Etag 值是根据资源内容编码生成的一段字符串(资源标识)，内容不同则生成不同的 Etag，再次请求时会带有 if-none-match 字段，值为上一次 Etag 的值，服务器根据这两个 Etag 进行比较，对比成功返回 304 从客户端获取，失败则返回新的 Etag 和资源。</p>
+<h2 id="原型原型链"><a href="#原型原型链" class="headerlink" title="原型原型链"></a>原型原型链</h2><p>原型：原型是function对象下的属性，它定义了构造函数的共同祖先，也就是一个父子级的关系，子对象会继承父对象的方法和属性<br>原型链：每个实例对象下都有__proto__属性，通过属性__proto__指向构造函数的原型对象，当到达末端时，返回null，这样一层一层向顶端查找，就形成了原型链</p>
+<h2 id="事件轮询-Event-Loop"><a href="#事件轮询-Event-Loop" class="headerlink" title="事件轮询(Event Loop)"></a>事件轮询(Event Loop)</h2><p>JS运行机制就是事件循环<br>1):JS分为同步任务和异步任务<br>2):同步任务都在主线程上执行，形成执行栈<br>3):主线程之外，事件触发线程管理着一个任务队列，只要异步任务有了结果，就在任务队列之中放置一个事件<br>4):一旦执行栈中的所有同步任务全部执行完毕（此时JS引擎空闲），系统会读取任务队列，将可运行的异步任务添加到可执行栈中，开始执行</p>
+<h2 id="微任务与宏任务"><a href="#微任务与宏任务" class="headerlink" title="微任务与宏任务"></a>微任务与宏任务</h2><p>宏任务包括:<br>script（整体代码）<br>setTimeout<br>setInterval<br>setImmediate<br>I/O<br>UI render<br>微任务包括<br>process.nextTick（node环境中）<br>Promise<br>Async/Await<br>MutationObserver（html5新特性）<br>运行机制:<br>执行一个宏任务（栈中没有就从事件队列中获取）<br>执行过程中如果遇到微任务，就将它添加到微任务的任务队列中去<br>宏任务执行完毕后，立即依次执行当前微任务队列的所有微任务<br>当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染<br>渲染完毕后，JS引擎线程继续接管，开始下一个宏任务（从事件队列中获取）</p>
 
                 
             </div>
@@ -815,7 +818,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2022</span>
+                <span id="year">2019-2023</span>
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">wensheng.yws</a>
